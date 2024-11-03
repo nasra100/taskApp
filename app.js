@@ -1,14 +1,14 @@
 const http = require('http');
 const { json } = require('stream/consumers');
-const PORT = 9000;
+const PORT = 8000;
 const HOSTNAME = 'localhost';
 
-const server = http.createserve((req, res) => {
-    if (req.url.startswitch('/task')) {
+const server = http.createServer((req, res) => {
+    if (req.url.startsWith('/task')) {
         taskRoutes(req, res)
     }
     else {
-        res.whriteHead(404, 'nodt found', {
+        res.writeHead(404, 'nodt found', {
             'content-type': 'application/json'
         })
         
@@ -19,7 +19,7 @@ const server = http.createserve((req, res) => {
 
 });
 
-server.lesten(PORT,HOSTNAME, ()=>{
-    console.log('server running on port ${PORT}')
+server.listen(PORT,HOSTNAME, ()=>{
+    console.log(`server running on port ${PORT}`)
 
 })

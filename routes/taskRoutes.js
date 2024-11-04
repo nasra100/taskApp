@@ -1,25 +1,20 @@
-const taskRoutes=(req,res)=>{
-    if(req.method == 'GET'){
-      getTasks(req,res);
+const { getTasks, createTask, updateTask, deleteTask } = require("../controllers/taskControllers");
 
-    }
-    else if (res.method == POST){
-        // res.end('create a new task');
-        createTask(req,res);
-
-    }else if(req.method ==='PATCH'){
-        // res.end('update a task');
-        updateTask(req,res);
-
-    }else if (req.methode ==='DELETE'){
-        // res.end('Delete a task');
-        delateTask(req,res);
-    }else{
-        res.whriteHead(404,'not found',{'content-type':'application/json'})
-            res.end(json.stringify({
-                massage:'page not found'
-        }));
-
+const taskRoutes = (req, res) => {
+    if(req.method === 'GET') {
+        getTasks(req, res);
+    } else if(req.method === 'POST') {
+        createTask(req, res)
+    } else if (req.method === 'PATCH') {
+        updateTask(req, res)
+    } else if(req.method === 'DELETE') {
+        deleteTask(req, res)
+    } else {
+        res.writeHead(404, 'Data Not Found', { 'content-type': 'application/json'})
+        res.end(JSON.stringify({
+            message: "Unknown Method required."
+        }))
     }
 }
-module.exports=taskRoutes;
+
+module.exports = taskRoutes;

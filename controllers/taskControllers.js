@@ -37,7 +37,7 @@ exports.createTask = (req, res) => {
             title: fields.title,
             description: fields?.description || '',
             status: fields?.status || 'pending',
-            image: `image ? /uploads/${image.originalFilename} : null`,
+            image: image ? `/uploads/${image.originalFilename}` : null,
         }
 
         tasks.push(newTask);
@@ -92,7 +92,7 @@ exports.updateTask = (req, res) => {
             title: fields.title || tasks[taskIndex].title,
             description: fields.description || tasks[taskIndex].description,
             status: fields.status || tasks[taskIndex].status,
-            image: `image ? /uploads/${image.originalFilename} : tasks[taskIndex].image`,
+            image: image ? `/uploads/${image.originalFilename}` : tasks[taskIndex].image,
         }
 
         tasks[taskIndex] = updatedTask;
